@@ -355,80 +355,240 @@ export default function Home() {
   }
 
   return (
-    <div className="w-screen h-screen grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-      <div className="w-full grid grid-rows-2">
-        <div className="bg-teal-500 dark:bg-teal-700">
-          <h1 className="text-center mt-5 font-bold text-3xl">Insertion Sort</h1>
-          <h2 className="text-center mt-5 text-2xl">Best case: O(n) | Average case: O(n<sup>2</sup>) | Worst case: O(n<sup>2</sup>)</h2>
-          <div className="flex flex-row justify-center ml-4 mt-10">
-            {insertionSortArray.map((value, index) => 
-              (index === insertionComparing) ? (
-                <svg key={index} width="35" height="200">
-                  <rect
-                    x="0" 
-                    y={200 - (value * 20)} 
-                    width="35" 
-                    height={value * 20} 
-                    fill="red" 
-                  />
-                </svg>
-              ) : ((value === insertionKey) ? (
-                <svg key={index} width="35" height="200">
-                  <rect
-                    x="0" 
-                    y={200 - (value * 20)} 
-                    width="35" 
-                    height={value * 20} 
-                    fill="green" 
-                  />
-                </svg>
-              ) : (
-                <svg key={index} width="35" height="200">
-                  <rect
-                    x="0" 
-                    y={200 - (value * 20)} 
-                    width="35" 
-                    height={value * 20} 
-                    fill="blue" 
-                  />
-                </svg>
-              )
-            ))}
+    <div className="w-screen h-screen flex flex-col">
+      <div className="flex-grow grid grid-cols-1 xl:grid-cols-3">
+        <div className="w-full grid grid-rows-[minmax(0,1fr)_minmax(0,1fr)]">
+          <div className="bg-teal-500 dark:bg-teal-700">
+            <div className="flex justify-center">
+              <a target="_blank" href="https://www.geeksforgeeks.org/insertion-sort-algorithm/" className="text-center mt-5 font-bold text-3xl">Insertion Sort</a>
+            </div>
+            <h2 className="text-center mt-5 text-2xl">Best case: O(n) | Average case: O(n<sup>2</sup>) | Worst case: O(n<sup>2</sup>)</h2>
+            <div className="flex flex-row justify-center ml-4 mt-10">
+              {insertionSortArray.map((value, index) => 
+                (index === insertionComparing) ? (
+                  <svg key={index} width="35" height="200">
+                    <rect
+                      x="0" 
+                      y={200 - (value * 20)} 
+                      width="35" 
+                      height={value * 20} 
+                      fill="red" 
+                    />
+                  </svg>
+                ) : ((value === insertionKey) ? (
+                  <svg key={index} width="35" height="200">
+                    <rect
+                      x="0" 
+                      y={200 - (value * 20)} 
+                      width="35" 
+                      height={value * 20} 
+                      fill="green" 
+                    />
+                  </svg>
+                ) : (
+                  <svg key={index} width="35" height="200">
+                    <rect
+                      x="0" 
+                      y={200 - (value * 20)} 
+                      width="35" 
+                      height={value * 20} 
+                      fill="blue" 
+                    />
+                  </svg>
+                )
+              ))}
+            </div>
+            <div className="flex flex-row justify-center ml-4 mt-5">
+              {finishedInsertionSort && (
+                <button className="w-1/4 h-10 bg-blue-500 dark:bg-blue-700 text-white rounded-lg mt-5 mb-5 flex items-center justify-center" onClick={replayInsertionSort}>
+                  Replay
+                </button>
+              )}
+            </div>
           </div>
-          <div className="flex flex-row justify-center ml-4 mt-5">
-            {finishedInsertionSort && (
-              <button className="w-1/4 h-10 bg-blue-500 dark:bg-blue-700 text-white rounded-lg mt-5 mb-5 flex items-center justify-center" onClick={replayInsertionSort}>
-                Replay
-              </button>
-            )}
+          <div className="bg-violet-600 dark:bg-violet-800">
+            <div className="flex justify-center">
+              <a target="_blank" href="https://www.geeksforgeeks.org/selection-sort-algorithm-2/" className="text-center mt-4 font-bold text-3xl">Selection Sort</a>
+            </div>
+            <h2 className="text-center mt-5 text-2xl">Best case: O(n<sup>2</sup>) | Average case: O(n<sup>2</sup>) | Worst case: O(n<sup>2</sup>)</h2>
+            <div className="flex flex-row justify-center ml-4 mt-10">
+              {selectionSortArray.map((value, index) => 
+                (index === selectionComparing) ? (
+                  <svg key={index} width="35" height="200">
+                    <rect
+                      x="0" 
+                      y={200 - (value * 20)} 
+                      width="35" 
+                      height={value * 20} 
+                      fill="red" 
+                    />
+                  </svg>
+                ) : ((value === selectionIndex) ? (
+                  <svg key={index} width="35" height="200">
+                    <rect
+                      x="0" 
+                      y={200 - (value * 20)} 
+                      width="35" 
+                      height={value * 20} 
+                      fill="green" 
+                    />
+                  </svg>
+                ) : (
+                  <svg key={index} width="35" height="200">
+                    <rect
+                      x="0" 
+                      y={200 - (value * 20)} 
+                      width="35" 
+                      height={value * 20} 
+                      fill="blue" 
+                    />
+                  </svg>
+                ))
+              )}
+            </div>
+            <div className="flex flex-row justify-center ml-4 mt-5">
+              {finishedSelectionSort && (
+                <button className="w-1/4 h-10 bg-blue-500 dark:bg-blue-700 text-white rounded-lg mt-5 mb-5 flex items-center justify-center" onClick={replaySelectionSort}>
+                  Replay
+                </button>
+              )}
+            </div>
           </div>
         </div>
-        <div className="bg-violet-600 dark:bg-violet-800">
-          <h1 className="text-center mt-4 font-bold text-3xl">Selection Sort</h1>
-          <h2 className="text-center mt-5 text-2xl">Best case: O(n<sup>2</sup>) | Average case: O(n<sup>2</sup>) | Worst case: O(n<sup>2</sup>)</h2>
-          <div className="flex flex-row justify-center ml-4 mt-10">
-            {selectionSortArray.map((value, index) => 
-              (index === selectionComparing) ? (
-                <svg key={index} width="35" height="200">
-                  <rect
-                    x="0" 
-                    y={200 - (value * 20)} 
-                    width="35" 
-                    height={value * 20} 
-                    fill="red" 
-                  />
-                </svg>
-              ) : ((value === selectionIndex) ? (
-                <svg key={index} width="35" height="200">
-                  <rect
-                    x="0" 
-                    y={200 - (value * 20)} 
-                    width="35" 
-                    height={value * 20} 
-                    fill="green" 
-                  />
-                </svg>
-              ) : (
+        <div className="w-full grid grid-rows-[minmax(0,1fr)_minmax(0,1fr)]">
+          <div className="bg-green-500 dark:bg-green-700">
+           <div className="flex justify-center">
+              <a target="_blank" href="https://www.geeksforgeeks.org/bubble-sort-algorithm/" className="text-center mt-4 font-bold text-3xl">Bubble Sort</a>
+            </div>
+            <h2 className="text-center mt-5 text-2xl">Best case: O(n) | Average case: O(n<sup>2</sup>) | Worst case: O(n<sup>2</sup>)</h2>
+            <div className="flex flex-row justify-center ml-4 mt-10">
+              {bubbleSortArray.map((value, index) => 
+                (index === bubbleComparing1 || index === bubbleComparing2) ? (
+                  <svg key={index} width="35" height="200">
+                    <rect
+                      x="0" 
+                      y={200 - (value * 20)} 
+                      width="35" 
+                      height={value * 20} 
+                      fill="red" 
+                    />
+                  </svg>
+                ) : (
+                  <svg key={index} width="35" height="200">
+                    <rect
+                      x="0" 
+                      y={200 - (value * 20)} 
+                      width="35" 
+                      height={value * 20} 
+                      fill="blue" 
+                    />
+                  </svg>
+                )
+              )}
+            </div>
+            <div className="flex flex-row justify-center ml-4 mt-5">
+              {finishedBubbleSort && (
+                <button className="w-1/4 h-10 bg-blue-500 dark:bg-blue-700 text-white rounded-lg mt-5 mb-5 flex items-center justify-center" onClick={replayBubbleSort}>
+                  Replay
+                </button>
+              )}
+            </div>
+          </div>
+          <div className="bg-orange-500 dark:bg-orange-700">
+            <div className="flex justify-center">
+              <a target="_blank" href="https://www.geeksforgeeks.org/quick-sort-algorithm/" className="text-center mt-4 font-bold text-3xl">Quick Sort</a>
+            </div>
+            <h2 className="text-center mt-5 text-2xl">Best case: O(n log n) | Average case: O(n log n) | Worst case: O(n<sup>2</sup>)</h2>
+            <div className="flex flex-row justify-center ml-4 mt-10">
+              {quickSortArray.map((value, index) => 
+                (value === quickPivotIndex) ? (
+                  <svg key={index} width="35" height="200">
+                    <rect
+                      x="0" 
+                      y={200 - (value * 20)} 
+                      width="35" 
+                      height={value * 20} 
+                      fill="green" 
+                    />
+                  </svg>
+                ) : ((index === quickComparingIndex) ? (
+                  <svg key={index} width="35" height="200">
+                    <rect
+                      x="0" 
+                      y={200 - (value * 20)} 
+                      width="35" 
+                      height={value * 20} 
+                      fill="red" 
+                    />
+                  </svg>
+                ) : (
+                  <svg key={index} width="35" height="200">
+                    <rect
+                      x="0" 
+                      y={200 - (value * 20)} 
+                      width="35" 
+                      height={value * 20} 
+                      fill="blue" 
+                    />
+                  </svg>
+                )
+              ))}
+            </div>
+            <div className="flex flex-row justify-center ml-4 mt-5">
+              {finishedQuickSort && (
+                <button className="w-1/4 h-10 bg-blue-500 dark:bg-blue-700 text-white rounded-lg mt-5 mb-5 flex items-center justify-center" onClick={replayQuickSort}>
+                  Replay
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="w-full grid grid-rows-[minmax(0,1fr)_minmax(0,1fr)]">
+          <div className="bg-red-500">
+            <div className="flex justify-center">
+              <a target="_blank" href="https://www.geeksforgeeks.org/comb-sort/" className="text-center mt-4 font-bold text-3xl">Comb Sort</a>
+            </div>
+            <h2 className="text-center mt-5 text-2xl">Best case: O(n log n) | Average case: O(n<sup>2</sup>) | Worst case: O(n<sup>2</sup>)</h2>
+            <div className="flex flex-row justify-center ml-4 mt-10">
+              {combSortArray.map((value, index) => 
+                (index === combComparing1 || index === combComparing2) ? (
+                  <svg key={index} width="35" height="200">
+                    <rect
+                      x="0" 
+                      y={200 - (value * 20)} 
+                      width="35" 
+                      height={value * 20} 
+                      fill="red" 
+                    />
+                  </svg>
+                ) : (
+                  <svg key={index} width="35" height="200">
+                    <rect
+                      x="0" 
+                      y={200 - (value * 20)} 
+                      width="35" 
+                      height={value * 20} 
+                      fill="blue" 
+                    />
+                  </svg>
+                )
+              )}
+            </div>
+            <div className="flex flex-row justify-center ml-4 mt-5">
+              {finishedCombSort && (
+                <button className="w-1/4 h-10 bg-blue-500 dark:bg-blue-700 text-white rounded-lg mt-5 mb-5 flex items-center justify-center" onClick={replayCombSort}>
+                  Replay
+                </button>
+              )}
+            </div>
+          </div>
+          <div className="bg-blue-500">
+            <div className="flex justify-center">
+              <a target="_blank" href="https://www.geeksforgeeks.org/bogosort-permutation-sort/" className="text-center mt-4 font-bold text-3xl">Bogo Sort</a>
+            </div>
+            <h2 className="text-center mt-5 text-2xl">Best case: O(n) | Average case: O((n + 1)!) | Worst case: O(∞)</h2>
+            <div className="flex flex-row justify-center ml-4 mt-10">
+              {bogoSortArray.map((value, index) => 
                 <svg key={index} width="35" height="200">
                   <rect
                     x="0" 
@@ -438,164 +598,21 @@ export default function Home() {
                     fill="blue" 
                   />
                 </svg>
-              ))
-            )}
-          </div>
-          <div className="flex flex-row justify-center ml-4 mt-5">
-            {finishedSelectionSort && (
-              <button className="w-1/4 h-10 bg-blue-500 dark:bg-blue-700 text-white rounded-lg mt-5 mb-5 flex items-center justify-center" onClick={replaySelectionSort}>
-                Replay
-              </button>
-            )}
+              )}
+            </div>
+            <div className="flex flex-row justify-center ml-4 mt-5">
+              {finishedBogoSort && (
+                <button className="w-1/4 h-10 bg-blue-500 dark:bg-blue-700 text-white rounded-lg mt-5 mb-5 flex items-center justify-center" onClick={replayBogoSort}>
+                  Replay
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
-      <div className="w-full grid grid-rows-2">
-        <div className="bg-green-500 dark:bg-green-700">
-          <h1 className="text-center mt-4 font-bold text-3xl">Bubble Sort</h1>
-          <h2 className="text-center mt-5 text-2xl">Best case: O(n) | Average case: O(n<sup>2</sup>) | Worst case: O(n<sup>2</sup>)</h2>
-          <div className="flex flex-row justify-center ml-4 mt-10">
-            {bubbleSortArray.map((value, index) => 
-              (index === bubbleComparing1 || index === bubbleComparing2) ? (
-                <svg key={index} width="35" height="200">
-                  <rect
-                    x="0" 
-                    y={200 - (value * 20)} 
-                    width="35" 
-                    height={value * 20} 
-                    fill="red" 
-                  />
-                </svg>
-              ) : (
-                <svg key={index} width="35" height="200">
-                  <rect
-                    x="0" 
-                    y={200 - (value * 20)} 
-                    width="35" 
-                    height={value * 20} 
-                    fill="blue" 
-                  />
-                </svg>
-              )
-            )}
-          </div>
-          <div className="flex flex-row justify-center ml-4 mt-5">
-            {finishedBubbleSort && (
-              <button className="w-1/4 h-10 bg-blue-500 dark:bg-blue-700 text-white rounded-lg mt-5 mb-5 flex items-center justify-center" onClick={replayBubbleSort}>
-                Replay
-              </button>
-            )}
-          </div>
-        </div>
-        <div className="bg-orange-500 dark:bg-orange-700">
-          <h1 className="text-center mt-4 font-bold text-3xl">Quick Sort</h1>
-          <h2 className="text-center mt-5 text-2xl">Best case: O(n log n) | Average case: O(n log n) | Worst case: O(n<sup>2</sup>)</h2>
-          <div className="flex flex-row justify-center ml-4 mt-10">
-            {quickSortArray.map((value, index) => 
-              (value === quickPivotIndex) ? (
-                <svg key={index} width="35" height="200">
-                  <rect
-                    x="0" 
-                    y={200 - (value * 20)} 
-                    width="35" 
-                    height={value * 20} 
-                    fill="green" 
-                  />
-                </svg>
-              ) : ((index === quickComparingIndex) ? (
-                <svg key={index} width="35" height="200">
-                  <rect
-                    x="0" 
-                    y={200 - (value * 20)} 
-                    width="35" 
-                    height={value * 20} 
-                    fill="red" 
-                  />
-                </svg>
-              ) : (
-                <svg key={index} width="35" height="200">
-                  <rect
-                    x="0" 
-                    y={200 - (value * 20)} 
-                    width="35" 
-                    height={value * 20} 
-                    fill="blue" 
-                  />
-                </svg>
-              )
-            ))}
-          </div>
-          <div className="flex flex-row justify-center ml-4 mt-5">
-            {finishedQuickSort && (
-              <button className="w-1/4 h-10 bg-blue-500 dark:bg-blue-700 text-white rounded-lg mt-5 mb-5 flex items-center justify-center" onClick={replayQuickSort}>
-                Replay
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
-      <div className="w-full grid grid-rows-2">
-        <div className="bg-red-500">
-          <h1 className="text-center mt-4 font-bold text-3xl">Comb Sort</h1>
-          <h2 className="text-center mt-5 text-2xl">Best case: O(n log n) | Average case: O(n<sup>2</sup>) | Worst case: O(n<sup>2</sup>)</h2>
-          <div className="flex flex-row justify-center ml-4 mt-10">
-            {combSortArray.map((value, index) => 
-              (index === combComparing1 || index === combComparing2) ? (
-                <svg key={index} width="35" height="200">
-                  <rect
-                    x="0" 
-                    y={200 - (value * 20)} 
-                    width="35" 
-                    height={value * 20} 
-                    fill="red" 
-                  />
-                </svg>
-              ) : (
-                <svg key={index} width="35" height="200">
-                  <rect
-                    x="0" 
-                    y={200 - (value * 20)} 
-                    width="35" 
-                    height={value * 20} 
-                    fill="blue" 
-                  />
-                </svg>
-              )
-            )}
-          </div>
-          <div className="flex flex-row justify-center ml-4 mt-5">
-            {finishedCombSort && (
-              <button className="w-1/4 h-10 bg-blue-500 dark:bg-blue-700 text-white rounded-lg mt-5 mb-5 flex items-center justify-center" onClick={replayCombSort}>
-                Replay
-              </button>
-            )}
-          </div>
-        </div>
-        <div className="bg-blue-500">
-          <h1 className="text-center mt-4 font-bold text-3xl">Bogo Sort</h1>
-          <h2 className="text-center mt-5 text-2xl">Best case: O(n) | Average case: O((n + 1)!) | Worst case: O(∞)</h2>
-          <div className="flex flex-row justify-center ml-4 mt-10">
-            {bogoSortArray.map((value, index) => 
-              <svg key={index} width="35" height="200">
-                <rect
-                  x="0" 
-                  y={200 - (value * 20)} 
-                  width="35" 
-                  height={value * 20} 
-                  fill="blue" 
-                />
-              </svg>
-            )}
-          </div>
-          <div className="flex flex-row justify-center ml-4 mt-5">
-            {finishedBogoSort && (
-              <button className="w-1/4 h-10 bg-blue-500 dark:bg-blue-700 text-white rounded-lg mt-5 mb-5 flex items-center justify-center" onClick={replayBogoSort}>
-                Replay
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
+      <footer className="bg-gray-400 dark:bg-gray-600 p-4">
+        © 2025 Arhan Busam. Please note the speed of each graph is not perfectly to scale to the other graphs. Clicking each sorting algorithm heading will open an external site with more information. I do not have any control over the content of the external site.
+      </footer>
     </div>
   );
 }
