@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const sleep = (ms: number) =>
@@ -139,7 +139,7 @@ export default function Home() {
 
     for (let i = 1; i < insertionSortArray.length; i++) {
       await sleep(1000);
-      let key = insertionSortArray[i];
+      const key = insertionSortArray[i];
       setInsertionKey(key);
       let j = i - 1;
 
@@ -296,7 +296,7 @@ export default function Home() {
   };
 
   const combSort = async () => {
-    let array = [...combSortArray];
+    const array = [...combSortArray];
     let gap = array.length;
     let swapped = true;
 
